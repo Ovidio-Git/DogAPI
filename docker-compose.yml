@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+
+  app:
+    build: .
+    restart: always
+    container_name: api
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+
+  db:
+    container_name: database
+    image: mysql:8.0.19
+    command: '--default-authentication-plugin=mysql_native_password'
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: testeando
+      MYSQL_DATABASE: test
