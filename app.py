@@ -1,29 +1,31 @@
 from flask import Flask, jsonify
-from database import database as MySQL
+from flask_sqlalchemy import SQLAlchemy
+import datetime
 
 app = Flask(__name__)
+app.config["SQLALCHEMY_DATABASE_URI"]="//root:1989@localhost/pets"
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]=False
+db = SQLAlchemy(app)
+
+class Dogs(db.Model):
+    __tablename__ = 'dogs'
+    id =db.Column(db.Integer,primary_key=True, unique=True, nullable=False)
+    name = db.Column(db.String(20), nullable=False)
+    picture = db.Column(db.String(100))
+    is_adopted = db.Boolean(default=1,nullable=False )
+    created_date = db.DateTime(default=datetime.datetime.now, nullable=False)
+
+    def __repr__(self):
+        return '<Dog %r>' % self.name #show data value not id value
 
 
+@app.route("/")
+def home():
+    return "holo prro"
 
-#  DATABASE CONNECTION
-@app.on_event('startup')   # if server is up connect to database
-async def start():
-    if MySQL.is_closed():
-        MySQL.connect()
-
-    # create tables for database
-    MySQL.create_tables([Dogs])
-
-
-@app.on_event('shutdown')  # if server is down disconnect to database
-async def finish():
-    if not MySQL.is_closed():
-        MySQL.close()
-
-
-@app.route("/api/dogs")
-async def index():
-    return jsonify(Dogs)
+# @app.route("/api/dogs")
+# def index():
+#     return jsonify(Dogs)
 
 # @app.route("/api/dogs")
 # async def index():
@@ -74,4 +76,4 @@ async def index():
 #     return "information saved"
 
 if __name__=='__main__':
-    app.run(debug=True)
+    app.run()

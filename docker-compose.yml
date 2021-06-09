@@ -9,15 +9,15 @@ services:
     depends_on:
       - db
     ports:
-      - "3000:3000"
+      - "5000:5000"
     volumes:
       - .:/app
 
   db:
     container_name: database
-    image: mysql:8.0.19
+    image: mysql
     command: '--default-authentication-plugin=mysql_native_password'
     restart: always
     environment:
-      MYSQL_ROOT_PASSWORD: testeando
-      MYSQL_DATABASE: test
+      MYSQL_ROOT_PASSWORD: "1989"
+      MYSQL_DATABASE: pets
