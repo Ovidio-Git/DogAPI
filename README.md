@@ -5,5 +5,5 @@
 ### Requirements General
 
 - [x] Python
-- [x] FastAPI
+- [x] Flask
 - [x] Docker
