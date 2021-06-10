@@ -32,10 +32,13 @@ db.create_all()
 def home():
     return "Bienvenido al inicio amigo mio"
 
+@app.route('/api/dogs/')
+def all_date():
+    pass
 
 @app.route('/api/dogs/<dname>',)
-def Receive_name(dname):
-    Query = Dogs.query.filter_by(name=dname).first()
+def Receive_dog(dname):
+    Query = Dogs.query.filter_by(name=dname).first_or_404()
     Data = {
         'id_dog': Query.id_dog, 
         'name': Query.name, 
@@ -46,7 +49,12 @@ def Receive_name(dname):
     return jsonify(Data)
 
 
-
+@app.route('/api/dogs/<dname>', methods=['DELETE'])
+def delete_dog(dname):
+    Query = Dogs.query.filter_by(name=dname).first()
+    db.session.delete(Query)
+    db.session.commit()
+    return '200 OK DELETE'
 
 
 @app.route("/api/dogs/", methods=['POST'])
@@ -71,26 +79,33 @@ def create_dog():
         created_date=datetime.datetime.now())
     db.session.add(add)
     db.session.commit()
-    return '200 OK [Information receive]'
+    return '200 OK CREATE'
+
+    
+@app.route('/api/dogs/<dname>', methods=['PUT'])
+def update_dog(dname):
+    data   = request.get_json()
+    id_dog = data['id_dog']
+    name   = data['name']
+    is_adopted = data['is_adopted']
+    # Query picture from external API
+    url = "https://dog.ceo/api/breeds/image/random"
+    response = requests.get(url)
+    things  = response.json()
+    picture = things['message']
 
 
-# @app.route("/api/dogs")
-# def index():
-#     return jsonify(Dogs)
+    Query = Dogs.query.filter_by(name=dname).first_or_404()
+    Query.id_dog = id_dog
+    Query.name = name
+    Query.picture = picture
+    Query.is_adopted = is_adopted
+    Query.create_date = datetime.datetime.now()
+    db.session.commit()
+    
+    return "200 OK UPDATE"
 
-# @app.route("/api/dogs")
-# def index():
-#     response = []
-#     for dog in Dogs.select():
-#         response.append( UserResponseModel(
-#         id = dog.id,
-#         name = dog.name,
-#         picture = dog.picture,
-#         is_adopted=dog.is_adopted,
-#         created_date=dog.created_date))
-#     return response
 
-# 
 if __name__ == '__main__':
     app.run()
     
