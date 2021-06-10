@@ -1,3 +1,4 @@
 greenlet
 flask
 flask_sqlalchemy
+requests
