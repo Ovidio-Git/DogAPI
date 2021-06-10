@@ -3,29 +3,34 @@ import requests
 from flask import Flask, jsonify, request
 from flask_sqlalchemy import SQLAlchemy
 
+
 app = Flask(__name__)
-app.config["SQLALCHEMY_DATABASE_URI"]="mysql://root:1989@localhost/pets"
+app.config["SQLALCHEMY_DATABASE_URI"]="mysql+pymysql://root:1989@db/pets"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]=False
 db = SQLAlchemy(app)
 
 class Dogs(db.Model):
-    __tablename__ = 'dogs'
+    
     id_dog =db.Column(db.Integer,primary_key=True, unique=True, nullable=False)
     name = db.Column(db.String(20), nullable=False)
     picture = db.Column(db.String(100))
     is_adopted = db.Column(db.Boolean,default=1,nullable=False )
-    created_date = db.Column(db.DateTime,default=datetime.datetime.now, nullable=False)
+    created_date = db.Column(db.DateTime,nullable=False)
 
-    def __repr__(self):
-        return '<Dog %r>' % self.name #show data value not id value
 
+    def __init__(self, id_dog, name, picture, is_adopted, created_date):
+        self.id_dog  = id_dog
+        self.name    = name
+        self.picture = picture
+        self.is_adopted   = is_adopted
+        self.created_date = created_date
+
+db.create_all()
 
 
 @app.route("/")
 def home():
-
-    print("Listo1")
-    return "hola prro"
+    return "Bienvenido al inicio amigo mio"
 
 
 @app.route("/api/dogs/", methods=['POST'])
@@ -42,10 +47,15 @@ def create_dog():
         picture = things['message']
     else:
         print("Query to external API Error")
-    add = Dogs(id_dog=id_dog, name=name,picture=picture, is_adopted=is_adopted)
+    add = Dogs(
+        id_dog=id_dog, 
+        name=name,
+        picture=picture, 
+        is_adopted=is_adopted,
+        created_date=datetime.datetime.now())
     db.session.add(add)
     db.session.commit()
-    return 'OK 200 [Information receive]'
+    return '200 OK [Information receive]'
 
 
 # @app.route("/api/dogs")
@@ -65,7 +75,7 @@ def create_dog():
 #     return response
 
 # 
-if __name__=='__main__':
-    db.create_all()
+if __name__ == '__main__':
     print("****Listo*****")
     app.run()
+    

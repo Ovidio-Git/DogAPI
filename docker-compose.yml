@@ -21,3 +21,7 @@ services:
     environment:
       MYSQL_ROOT_PASSWORD: "1989"
       MYSQL_DATABASE: pets
+    ports:
+      - "3306:3306"
+    cap_add:
+      - SYS_NICE
