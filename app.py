@@ -33,6 +33,22 @@ def home():
     return "Bienvenido al inicio amigo mio"
 
 
+@app.route('/api/dogs/<dname>',)
+def Receive_name(dname):
+    Query = Dogs.query.filter_by(name=dname).first()
+    Data = {
+        'id_dog': Query.id_dog, 
+        'name': Query.name, 
+        'picture': Query.picture, 
+        'is_adopted':Query.is_adopted, 
+        'create_date':Query.created_date
+        }
+    return jsonify(Data)
+
+
+
+
+
 @app.route("/api/dogs/", methods=['POST'])
 def create_dog():
     data   = request.get_json()
@@ -76,6 +92,5 @@ def create_dog():
 
 # 
 if __name__ == '__main__':
-    print("****Listo*****")
     app.run()
     
