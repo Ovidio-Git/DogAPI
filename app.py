@@ -5,8 +5,12 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
+
+# configuration sqlalchemy for mysql
 app.config["SQLALCHEMY_DATABASE_URI"]="mysql+pymysql://root:1989@db/pets"
 app.config["SQLALCHEMY_TRACK_MODIFICATIONS"]=False
+# key used to encrypt your cookies and save send them to the browser 
+app.config['SECRET_KEY'] = 'T800' 
 db = SQLAlchemy(app)
 
 class Dogs(db.Model):
@@ -28,35 +32,8 @@ class Dogs(db.Model):
 db.create_all()
 
 
-@app.route("/")
-def home():
-    return "Bienvenido al inicio amigo mio"
 
-@app.route('/api/dogs/')
-def all_date():
-    pass
-
-@app.route('/api/dogs/<dname>',)
-def Receive_dog(dname):
-    Query = Dogs.query.filter_by(name=dname).first_or_404()
-    Data = {
-        'id_dog': Query.id_dog, 
-        'name': Query.name, 
-        'picture': Query.picture, 
-        'is_adopted':Query.is_adopted, 
-        'create_date':Query.created_date
-        }
-    return jsonify(Data)
-
-
-@app.route('/api/dogs/<dname>', methods=['DELETE'])
-def delete_dog(dname):
-    Query = Dogs.query.filter_by(name=dname).first()
-    db.session.delete(Query)
-    db.session.commit()
-    return '200 OK DELETE'
-
-
+# CREATE ITEM PER NAME
 @app.route("/api/dogs/", methods=['POST'])
 def create_dog():
     data   = request.get_json()
@@ -81,7 +58,54 @@ def create_dog():
     db.session.commit()
     return '200 OK CREATE'
 
-    
+
+# READ ALL ITEMS
+@app.route('/api/dogs/')
+def read_all():
+    response = []
+    for Query in Dogs.query.all():
+        Data = {
+            'id_dog': Query.id_dog, 
+            'name': Query.name, 
+            'picture': Query.picture, 
+            'is_adopted':Query.is_adopted, 
+            'create_date':Query.created_date
+            }
+        response.append(Data)
+    return jsonify(response)   
+
+
+# READ ITEMS PER NAMES
+@app.route('/api/dogs/<dname>',)
+def read_names(dname):
+    Query = Dogs.query.filter_by(name=dname).first_or_404()
+    Data = {
+        'id_dog': Query.id_dog, 
+        'name': Query.name, 
+        'picture': Query.picture, 
+        'is_adopted':Query.is_adopted, 
+        'create_date':Query.created_date
+        }
+    return jsonify(Data)
+
+
+# READ ITEMS PER IS_ADOPTED
+@app.route('/api/dogs/is_adopted',)
+def read_is_adopted():
+    response = []
+    for Query in Dogs.query.filter_by(is_adopted=True).all():
+        Data = {
+            'id_dog': Query.id_dog, 
+            'name': Query.name, 
+            'picture': Query.picture, 
+            'is_adopted':Query.is_adopted, 
+            'create_date':Query.created_date
+            }
+        response.append(Data)
+    return jsonify(response)  
+
+
+# UPDATE ITEM PER NAME   
 @app.route('/api/dogs/<dname>', methods=['PUT'])
 def update_dog(dname):
     data   = request.get_json()
@@ -104,6 +128,16 @@ def update_dog(dname):
     db.session.commit()
     
     return "200 OK UPDATE"
+
+
+# DELETE ITEM PER NAME
+@app.route('/api/dogs/<dname>', methods=['DELETE'])
+def delete_dog(dname):
+    Query = Dogs.query.filter_by(name=dname).first()
+    db.session.delete(Query)
+    db.session.commit()
+    return '200 OK DELETE'
+
 
 
 if __name__ == '__main__':
