@@ -1,5 +1,6 @@
 greenlet
 flask
 flask_sqlalchemy
+flask-jwt
 requests
 pymysql

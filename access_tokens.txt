@@ -1,0 +1,17 @@
+-- root
+
+{
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjM0NjAyMjAsImlhdCI6MTYyMzQ1OTkyMCwibmJmIjoxNjIzNDU5OTIwLCJpZGVudGl0eSI6MX0.8LTOQUg3GSwye5rJOIULO1m2CwFEIj-qHOOnbBFbk38"
+}
+
+-- admin
+
+{
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjM0NjAyNDAsImlhdCI6MTYyMzQ1OTk0MCwibmJmIjoxNjIzNDU5OTQwLCJpZGVudGl0eSI6Mn0.MwA0VJcPNSwI6gLM-7TAwGlHKdkByVizg84Rkzr2iHI"
+}
+
+-- public
+
+{
+  "access_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE2MjM0NjAyNjMsImlhdCI6MTYyMzQ1OTk2MywibmJmIjoxNjIzNDU5OTYzLCJpZGVudGl0eSI6M30.iT0VXFe6hbnbbc35Cl1YjbAQdcOo4WumegK7Ea9I2hY"
+}
