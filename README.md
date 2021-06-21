@@ -73,3 +73,69 @@ Proyect made with Docker, Flask, Python and JWT autetication
 ]
   ```
 
+<br>
+
+4- `GET /api/dogs/<dname>`
+<br>Description:Create items for names.
+- Example:
+  <br>[http://127.0.0.1:5000/api/dogs/bronco](http://127.0.0.1:5000/api/dogs/bronco)
+
+ Response:
+   ```json
+ {
+    "create_date": "Mon, 21 Jun 2021 04:36:11 GMT",
+    "id_dog": 2,
+    "is_adopted": true,
+    "name": "shot",
+    "picture": "https://images.dog.ceo/breeds/basenji/n02110806_1404.jpg"
+ }
+ ```
+
+<br>
+
+5- `GET /api/dogs/is_adopted`
+<br>Description:Create items for names.
+- Example:
+  <br>[http://127.0.0.1:5000/api/dogs/is_adopted](http://127.0.0.1:5000/api/dogs/is_adopted)
+
+ Response:
+   ```json
+[
+   {
+      "create_date": "Mon, 21 Jun 2021 04:36:11 GMT",
+      "id_dog": 2,
+      "is_adopted": true,
+      "name": "shot",
+      "picture": "https://images.dog.ceo/breeds/basenji/n02110806_1404.jpg"
+   },
+   {
+      "create_date": "Mon, 21 Jun 2021 04:40:18 GMT",
+      "id_dog": 3,
+      "is_adopted": true,
+      "name": "bronco",
+      "picture": "https://images.dog.ceo/breeds/papillon/n02086910_6305.jpg"
+   }
+]
+ ```
+
+
+<br>
+
+6- `UPDATE /api/dogs/<dname>`
+<br>Description:Create items for names.
+- Example:
+  <br>[http://127.0.0.1:5000/api/dogs/bronco](http://127.0.0.1:5000/api/dogs/bronco)
+
+ Request:
+   ```json
+  {
+     "id_dog" : 3, 
+     "name":"broncono",
+     "is_adopted" :true
+ }
+ ```
+ Response:
+    ```
+    200 OK UPDATE
+ ```
+
