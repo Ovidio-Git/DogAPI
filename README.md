@@ -9,7 +9,7 @@ Proyect made with Docker, Flask, Python and JWT autetication
 ## Endpoints
 
 1- `POST /auth`
-<br>Description: get JWT token.
+<br>Description: Get JWT token.
 - Example:
   <br>[http://127.0.0.1:5000/auth](http://127.0.0.1:5000/auth)
 
@@ -30,7 +30,7 @@ Proyect made with Docker, Flask, Python and JWT autetication
 <br>
 
 2- `POST /api/dogs/`
-<br>Description:Create items for names.
+<br>Description: Create items for names.
 - Example:
   <br>[http://127.0.0.1:5000/api/dogs/](http://127.0.0.1:5000/api/dogs/)
 
@@ -49,7 +49,7 @@ Proyect made with Docker, Flask, Python and JWT autetication
 <br>
 
 3- `GET /api/dogs/`
-<br>Description:Read all items.
+<br>Description: Read all items.
 - Example:
   <br>[http://127.0.0.1:5000/api/dogs/](http://127.0.0.1:5000/api/dogs/)
 
@@ -76,9 +76,9 @@ Proyect made with Docker, Flask, Python and JWT autetication
 <br>
 
 4- `GET /api/dogs/<dname>`
-<br>Description:Create items for names.
+<br>Description: Read items for names.
 - Example:
-  <br>[http://127.0.0.1:5000/api/dogs/bronco](http://127.0.0.1:5000/api/dogs/bronco)
+  <br>[http://127.0.0.1:5000/api/dogs/shot](http://127.0.0.1:5000/api/dogs/shot)
 
  Response:
    ```json
@@ -94,7 +94,7 @@ Proyect made with Docker, Flask, Python and JWT autetication
 <br>
 
 5- `GET /api/dogs/is_adopted`
-<br>Description:Create items for names.
+<br>Description: Read items for is_adopted.
 - Example:
   <br>[http://127.0.0.1:5000/api/dogs/is_adopted](http://127.0.0.1:5000/api/dogs/is_adopted)
 
@@ -122,7 +122,7 @@ Proyect made with Docker, Flask, Python and JWT autetication
 <br>
 
 6- `UPDATE /api/dogs/<dname>`
-<br>Description:Create items for names.
+<br>Description: Update items for names.
 - Example:
   <br>[http://127.0.0.1:5000/api/dogs/bronco](http://127.0.0.1:5000/api/dogs/bronco)
 
@@ -138,4 +138,27 @@ Proyect made with Docker, Flask, Python and JWT autetication
     ```
     200 OK UPDATE
  ```
+
+
+
+<br>
+
+7- `DELETE /api/dogs/<dname>`
+<br>Description: Delete items for names.
+- Example:
+  <br>[http://127.0.0.1:5000/api/dogs/bronco](http://127.0.0.1:5000/api/dogs/bronco)
+
+ Request:
+   ```json
+  {
+     "id_dog" : 3, 
+     "name":"broncono",
+     "is_adopted" :true
+ }
+ ```
+ Response:
+    ```
+    200 OK DELETE
+ ```
+
 
