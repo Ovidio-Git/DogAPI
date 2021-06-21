@@ -1,4 +1,4 @@
-# DOGS API
+# DogAPI
  Code for build a Api DOGS
   
 ## Description
@@ -9,6 +9,7 @@ Proyect made with Docker, Flask, Python and JWT autetication
 <br>
 
 1- `POST /auth`
+<br>
 <br>Description: Get JWT token.
 - Example:
   <br>[http://127.0.0.1:5000/auth](http://127.0.0.1:5000/auth)
@@ -31,6 +32,7 @@ Proyect made with Docker, Flask, Python and JWT autetication
 <br>
 
 2- `POST /api/dogs/`
+<br>
 <br>Description: Create items for names.
 - Example:
   <br>[http://127.0.0.1:5000/api/dogs/](http://127.0.0.1:5000/api/dogs/)
@@ -51,6 +53,7 @@ Proyect made with Docker, Flask, Python and JWT autetication
 <br>
 
 3- `GET /api/dogs/`
+<br>
 <br>Description: Read all items.
 - Example:
   <br>[http://127.0.0.1:5000/api/dogs/](http://127.0.0.1:5000/api/dogs/)
@@ -79,6 +82,7 @@ Proyect made with Docker, Flask, Python and JWT autetication
 <br>
 
 4- `GET /api/dogs/<dname>`
+<br>
 <br>Description: Read items for names.
 - Example:
   <br>[http://127.0.0.1:5000/api/dogs/shot](http://127.0.0.1:5000/api/dogs/shot)
@@ -98,6 +102,7 @@ Proyect made with Docker, Flask, Python and JWT autetication
 <br>
 
 5- `GET /api/dogs/is_adopted`
+<br>
 <br>Description: Read items for is_adopted.
 - Example:
   <br>[http://127.0.0.1:5000/api/dogs/is_adopted](http://127.0.0.1:5000/api/dogs/is_adopted)
@@ -126,6 +131,7 @@ Proyect made with Docker, Flask, Python and JWT autetication
 <br>
 
 6- `UPDATE /api/dogs/<dname>`
+<br>
 <br>Description: Update items for names.
 - Example:
   <br>[http://127.0.0.1:5000/api/dogs/bronco](http://127.0.0.1:5000/api/dogs/bronco)
@@ -148,6 +154,7 @@ Proyect made with Docker, Flask, Python and JWT autetication
 <br>
 
 7- `DELETE /api/dogs/<dname>`
+<br>
 <br>Description: Delete items for names.
 - Example:
   <br>[http://127.0.0.1:5000/api/dogs/broncono](http://127.0.0.1:5000/api/dogs/broncono)
