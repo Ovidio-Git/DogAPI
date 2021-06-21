@@ -27,7 +27,7 @@ Proyect made with Docker, Flask, Python and JWT autetication
    }
   ```
  
- 
+<br>
 2- `POST /api/dogs/`
 <br>Description:Create items for names.
 - Example:
@@ -45,3 +45,29 @@ Proyect made with Docker, Flask, Python and JWT autetication
    ```
     200 OK CREATE
   ```
+<br>
+3- `GET /api/dogs/`
+<br>Description:Read all items.
+- Example:
+  <br>[http://127.0.0.1:5000/api/dogs/](http://127.0.0.1:5000/api/dogs/)
+
+ Response:
+   ```json
+[
+    {
+       "create_date": "Mon, 21 Jun 2021 04:32:22 GMT",
+       "id_dog": 1,
+       "is_adopted": false,
+       "name": "loky",
+       "picture": "https://images.dog.ceo/breeds/terrier-australian/n02096294_8557.jpg"
+    },
+    {
+       "create_date": "Mon, 21 Jun 2021 04:36:11 GMT",
+       "id_dog": 2,
+       "is_adopted": true,
+       "name": "shot",
+       "picture": "https://images.dog.ceo/breeds/basenji/n02110806_1404.jpg"
+    }
+]
+  ```
+
