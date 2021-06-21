@@ -2,7 +2,7 @@
  Code for build a Api DOGS
   
 ## Description
- 
+ Proyect made with Docker, Flask, Python and JWT autetication  and MySQL 
 
 ## Endpoints
 
