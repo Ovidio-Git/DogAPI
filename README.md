@@ -1,12 +1,17 @@
 # DOGS API
  Code for build a Api DOGS
+
+<br>
  
  
 ## Description
 Proyect made with Docker, Flask, Python and JWT autetication 
 
+<br>
 
 ## Endpoints
+
+<br>
 
 1- `POST /auth`
 <br>Description: Get JWT token.
