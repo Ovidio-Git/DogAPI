@@ -28,6 +28,7 @@ Proyect made with Docker, Flask, Python and JWT autetication
   ```
  
 <br>
+<br>
 
 2- `POST /api/dogs/`
 <br>Description: Create items for names.
@@ -46,6 +47,7 @@ Proyect made with Docker, Flask, Python and JWT autetication
    ```
     200 OK CREATE
   ```
+<br>
 <br>
 
 3- `GET /api/dogs/`
@@ -74,6 +76,7 @@ Proyect made with Docker, Flask, Python and JWT autetication
   ```
 
 <br>
+<br>
 
 4- `GET /api/dogs/<dname>`
 <br>Description: Read items for names.
@@ -91,6 +94,7 @@ Proyect made with Docker, Flask, Python and JWT autetication
  }
  ```
 
+<br>
 <br>
 
 5- `GET /api/dogs/is_adopted`
@@ -118,7 +122,7 @@ Proyect made with Docker, Flask, Python and JWT autetication
 ]
  ```
 
-
+<br>
 <br>
 
 6- `UPDATE /api/dogs/<dname>`
@@ -135,12 +139,12 @@ Proyect made with Docker, Flask, Python and JWT autetication
  }
  ```
  Response:
-    ```
+ ```
     200 OK UPDATE
  ```
 
 
-
+<br>
 <br>
 
 7- `DELETE /api/dogs/<dname>`
@@ -157,7 +161,7 @@ Proyect made with Docker, Flask, Python and JWT autetication
  }
  ```
  Response:
-    ```
+   ```
     200 OK DELETE
  ```
 
