@@ -150,18 +150,10 @@ Proyect made with Docker, Flask, Python and JWT autetication
 7- `DELETE /api/dogs/<dname>`
 <br>Description: Delete items for names.
 - Example:
-  <br>[http://127.0.0.1:5000/api/dogs/bronco](http://127.0.0.1:5000/api/dogs/bronco)
+  <br>[http://127.0.0.1:5000/api/dogs/broncono](http://127.0.0.1:5000/api/dogs/broncono)
 
- Request:
-   ```json
-  {
-     "id_dog" : 3, 
-     "name":"broncono",
-     "is_adopted" :true
- }
- ```
  Response:
-   ```
+  ```
     200 OK DELETE
  ```
 
